@@ -29,20 +29,11 @@ root.right.left.right = node6
 root.right.right.left = node7
 root.right.right.right = node8
 
-
+print(" -- Not the greatest visualization --")
 print(root.key)
-print(root.left.key)
-print(root.right.key)
-
-print(root.left.left.key)
-
-print(root.right.left.key)
-print(root.right.right.key)
-
-print(root.right.left.right.key)
-
-print(root.right.right.left.key)
-print(root.right.right.right.key)
+print(root.left.key, root.right.key)
+print(root.left.left.key, root.left.right, root.right.left.key, root.right.right.key)
+print(root.right.left.right.key, root.right.right.left.key, root.right.right.right.key)
 
 
 
