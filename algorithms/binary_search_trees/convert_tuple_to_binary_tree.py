@@ -14,23 +14,14 @@ class TreeNode:
         self.right = None
 
 def parse_tuple(data):
-    # print(data)
     if isinstance(data, tuple) and len(data) == 3:
-        # print(f"Data: {data}")
-
         node = TreeNode(data[1])
-        # print(f"Node: {node.key}")
-
         node.left = parse_tuple(data[0])
-        # print(f"Node left: {node.left.key if node.left else None}")
-
         node.right = parse_tuple(data[2])
-        # print(f"Node Right: {node.right.key if node.right else None}")
 
     elif data is None:
         node = None
     else:
-        print(f"Single data: {data}")
         node = TreeNode(data)
 
     return node
@@ -52,14 +43,11 @@ Tree to Tuple
 """
 
 def tree_to_tuple(node):
-    print(f"Key: {node.key if node else None}")
 
     if isinstance(node, TreeNode):
-        print(f"Node Key: {node.key}")
         if node.left is None and node.right is None:
             return node.key
     
-        # print((tree_to_tuple(node.left), node.key, tree_to_tuple(node.right)))
         return (tree_to_tuple(node.left), node.key, tree_to_tuple(node.right))
 
 print('-----------------')
