@@ -22,6 +22,7 @@ while i < n:
     j = 0
     while j <= i:
         print(chr(i+65), end=" ")
-        j+=1
+        j += 1
+    
     print()
-    i+=1
+    i += 1
