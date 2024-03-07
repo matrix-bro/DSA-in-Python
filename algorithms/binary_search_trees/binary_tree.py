@@ -118,3 +118,16 @@ def inorder_traversal(node):
 
 print('\n\n--------Inorder Traversal---------')
 inorder_traversal(tree)
+
+"""
+Postorder Traversal
+"""
+def postorder_traversal(node):
+    if node == None:
+        return
+    postorder_traversal(node.left)
+    postorder_traversal(node.right)
+    print(node.key, end=" ")
+
+print('\n\n--------Postorder Traversal---------')
+postorder_traversal(tree)
