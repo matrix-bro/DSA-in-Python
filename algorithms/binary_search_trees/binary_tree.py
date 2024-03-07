@@ -105,3 +105,16 @@ def preorder_traversal(node):
 
 print('\n--------Preorder Traversal---------')
 preorder_traversal(tree)
+
+"""
+Inorder Traversal
+"""
+def inorder_traversal(node):
+    if node == None:
+        return
+    inorder_traversal(node.left)
+    print(node.key, end=" ")
+    inorder_traversal(node.right)
+
+print('\n\n--------Inorder Traversal---------')
+inorder_traversal(tree)
