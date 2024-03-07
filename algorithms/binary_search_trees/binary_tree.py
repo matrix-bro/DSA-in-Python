@@ -92,3 +92,16 @@ def display_tree(node, space='\t', level=0):
 
 print('\n--------Displaying Tree---------')
 display_tree(tree)
+
+"""
+Preorder Traversal
+"""
+def preorder_traversal(node):
+    if node == None:
+        return
+    print(node.key, end=" ")
+    preorder_traversal(node.left)
+    preorder_traversal(node.right)
+
+print('\n--------Preorder Traversal---------')
+preorder_traversal(tree)
