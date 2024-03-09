@@ -140,3 +140,12 @@ def tree_height(node):
     return 1 + max(tree_height(node.left), tree_height(node.right))
 
 print(f'\n\nTree Height: {tree_height(tree)}')
+
+"""
+Size of a Tree / Number of nodes in a Binary Tree
+"""
+def tree_size(node):
+    if node is None: return 0
+    return 1 + tree_size(node.left) + tree_size(node.right)
+
+print(f'\nTree Size: {tree_size(tree)}')
