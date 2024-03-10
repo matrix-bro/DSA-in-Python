@@ -149,3 +149,18 @@ def tree_size(node):
     return 1 + tree_size(node.left) + tree_size(node.right)
 
 print(f'\nTree Size: {tree_size(tree)}')
+
+"""
+Count total number of Leaf Nodes
+"""
+
+def count_total_leaf_nodes(node):
+    if node is None:
+        return 0
+    
+    if node.left is None and node.right is None:
+        return 1
+    
+    return count_total_leaf_nodes(node.left) + count_total_leaf_nodes(node.right)
+
+print(f'\nTotal Leaf Nodes: {count_total_leaf_nodes(tree)}')
