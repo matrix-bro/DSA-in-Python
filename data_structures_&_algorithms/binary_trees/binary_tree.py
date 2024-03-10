@@ -27,15 +27,16 @@ def parse_tuple(data):
     return node
 
 # tree_tuple = ((1,3, None), 2, ((None, 3, 4), 5, (6, 7, 8)))
-tree_tuple = ((((1, 2, None), 3, ((None, 4, 5), 6, (7, 8, 9)))))
+# tree_tuple = ((((1, 2, None), 3, ((None, 4, 5), 6, (7, 8, 9)))))
+tree_tuple = (((None,2, None), 4, (1, 3, 2)), 3, (None, 6, (7, 8, 9)))
 tree = parse_tuple(tree_tuple)
 
 # Test
 
-print(tree.key)
-print(tree.left.key, tree.right.key)
-print(tree.left.left.key, tree.left.right, tree.right.left.key, tree.right.right.key)
-print(tree.right.left.right.key, tree.right.right.left.key, tree.right.right.right.key)
+# print(tree.key)
+# print(tree.left.key, tree.right.key)
+# print(tree.left.left.key, tree.left.right, tree.right.left.key, tree.right.right.key)
+# print(tree.right.left.right.key, tree.right.right.left.key, tree.right.right.right.key)
 
 
 """
@@ -164,3 +165,20 @@ def count_total_leaf_nodes(node):
     return count_total_leaf_nodes(node.left) + count_total_leaf_nodes(node.right)
 
 print(f'\nTotal Leaf Nodes: {count_total_leaf_nodes(tree)}')
+
+"""
+Minimum Depth of a Binary Tree
+"""
+def minimum_depth(node):
+    if node is None:
+        return 0
+    
+    if node.left is None:
+        return 1 + minimum_depth(node.right)
+    
+    if node.right is None:
+        return 1 + minimum_depth(node.left)
+    
+    return 1 + min(minimum_depth(node.left), minimum_depth(node.right))
+    
+print(f'\nMinimum Depth: {minimum_depth(tree)}')
