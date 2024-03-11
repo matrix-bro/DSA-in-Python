@@ -204,3 +204,25 @@ def is_bst(root):
     return inorder(root)
 
 print(f'\nIs BST: {is_bst(tree)}')
+
+"""
+Method 2 - Similar Second way to Check if Binary Tree is Binary Search Tree (BST)
+- Inorder Traversal
+"""
+def is_bst_2(root):
+    def inorder(node, prev):
+        if node is None:
+            return True
+        
+        if not inorder(node.left, prev):
+            return False
+        
+        if prev[0] and prev[0] >= node.key:
+            return False
+        
+        prev[0] = node.key
+        return inorder(node.right, prev)
+        
+    return inorder(root, [float("-inf")])
+
+print(f'\nIs BST 2: {is_bst_2(tree)}')
