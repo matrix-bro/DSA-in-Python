@@ -27,8 +27,9 @@ def parse_tuple(data):
     return node
 
 # tree_tuple = ((1,3, None), 2, ((None, 3, 4), 5, (6, 7, 8)))
-# tree_tuple = ((((1, 2, None), 3, ((None, 4, 5), 6, (7, 8, 9)))))
-tree_tuple = (((None,2, None), 4, (1, 3, 2)), 3, (None, 6, (7, 8, 9)))
+# tree_tuple = ((((1, 2, 3), 3, ((None, 4, 5), 6, (7, 8, 9)))))
+tree_tuple = ((((1, 2, None), 3, ((None, 4, 5), 6, (7, 8, 9)))))
+# tree_tuple = (((None,2, None), 4, (1, 3, 2)), 3, (None, 6, (7, 8, 9)))
 tree = parse_tuple(tree_tuple)
 
 # Test
@@ -182,3 +183,24 @@ def minimum_depth(node):
     return 1 + min(minimum_depth(node.left), minimum_depth(node.right))
     
 print(f'\nMinimum Depth: {minimum_depth(tree)}')
+
+"""
+Check if Binary Tree is Binary Search Tree (BST)
+- Inorder Traversal
+"""
+def is_bst(root):
+    prev = float("-inf")
+    def inorder(node):
+        nonlocal prev
+
+        if node is None:
+            return True
+        
+        if not (inorder(node.left) and prev < node.key):
+            return False
+        
+        prev = node.key
+        return inorder(node.right)
+    return inorder(root)
+
+print(f'\nIs BST: {is_bst(tree)}')
