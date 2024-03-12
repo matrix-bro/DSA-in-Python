@@ -26,9 +26,9 @@ def parse_tuple(data):
 
     return node
 
-# tree_tuple = ((1,3, None), 2, ((None, 3, 4), 5, (6, 7, 8)))
+tree_tuple = ((1,3, None), 2, ((None, 3, 4), 5, (6, 7, 8)))
 # tree_tuple = ((((1, 2, 3), 3, ((None, 4, 5), 6, (7, 8, 9)))))
-tree_tuple = ((((1, 2, None), 3, ((None, 4, 5), 6, (7, 8, 9)))))
+# tree_tuple = ((((1, 2, None), 3, ((None, 4, 5), 6, (7, 8, 9)))))
 # tree_tuple = (((None,2, None), 4, (1, 3, 2)), 3, (None, 6, (7, 8, 9)))
 tree = parse_tuple(tree_tuple)
 
@@ -226,3 +226,22 @@ def is_bst_2(root):
     return inorder(root, [float("-inf")])
 
 print(f'\nIs BST 2: {is_bst_2(tree)}')
+
+"""
+Find the Maximum Key
+"""
+def find_max_key(root):
+    def inner(node, max):
+        if node is None:
+            return
+        
+        if max[0] and node.key > max[0]:
+            max[0] = node.key
+        
+        inner(node.left, max)
+        inner(node.right, max)
+        return max[0]
+    
+    return inner(root, [float("-inf")])
+
+print(f'\nMax Key: {find_max_key(tree)}')
