@@ -245,3 +245,23 @@ def find_max_key(root):
     return inner(root, [float("-inf")])
 
 print(f'\nMax Key: {find_max_key(tree)}')
+
+"""
+Find the Minimum Key
+"""
+def find_min_key(root):
+    def inner(node, min):
+        if node is None:
+            return
+        
+        if min[0] and node.key < min[0]:
+            min[0] = node.key
+        
+        inner(node.left, min)
+        inner(node.right, min)
+
+        return min[0]
+
+    return inner(root, [float('inf')])
+
+print(f'\nMin Key: {find_min_key(tree)}')
