@@ -265,3 +265,22 @@ def find_min_key(root):
     return inner(root, [float('inf')])
 
 print(f'\nMin Key: {find_min_key(tree)}')
+
+"""
+Insert New Keys
+- Can only insert unique keys
+"""
+def insert_new_key(node, key):
+    if node is None:
+        node = TreeNode(key)
+    elif key < node.key:
+        node.left = insert_new_key(node.left, key)
+    elif key > node.key:
+        node.right = insert_new_key(node.right, key)
+    return node
+
+# Insert unique key
+insert_new_key(tree, 0)
+
+# After inserting, display the tree 
+display_tree(tree)
