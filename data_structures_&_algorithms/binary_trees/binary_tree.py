@@ -300,4 +300,18 @@ def find_key(node, key):
         return find_key(node.right, key)
 
 result = find_key(tree, 1)    
-print(f'\nFind Key: {result.key if result else None}')    
+print(f'\nFind Key: {result.key if result else None}')
+
+"""
+Update Key
+"""
+def update_key(node, key, new_key):
+    check_key = find_key(node, key)
+    if check_key:
+        check_key.key = new_key
+        return "Updated"
+    else:
+        return "Key not found"
+    
+print(f'\nUpdate Key: {update_key(tree, 3, 11)}')  
+display_tree(tree)  
