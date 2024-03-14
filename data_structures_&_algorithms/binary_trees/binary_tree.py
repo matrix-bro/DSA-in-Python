@@ -284,3 +284,20 @@ insert_new_key(tree, 0)
 
 # After inserting, display the tree 
 display_tree(tree)
+
+"""
+Find Key
+"""
+def find_key(node, key):
+    if node is None:
+        return None
+    
+    if key == node.key:
+        return node
+    elif key < node.key:
+        return find_key(node.left, key)
+    elif key > node.key:
+        return find_key(node.right, key)
+
+result = find_key(tree, 1)    
+print(f'\nFind Key: {result.key if result else None}')    
