@@ -135,13 +135,40 @@ print('\n\n--------Postorder Traversal---------')
 postorder_traversal(tree)
 
 """
+Levelorder Traversal
+"""
+def levelorder_traversal(node):
+    from collections import deque
+
+    if node is None:
+        return []
+    
+    res = []
+    queue = deque()
+    queue.append(node)
+    
+    while queue:
+        curr_node = queue.popleft()
+        res.append(curr_node.key)
+
+        if curr_node.left:
+            queue.append(curr_node.left)
+        if curr_node.right:
+            queue.append(curr_node.right)
+
+    return res
+
+print('\n\n--------Levelorder Traversal---------')
+print(levelorder_traversal(tree))
+
+"""
 Height of a Binary Tree
 """
 def tree_height(node):
     if node is None: return 0
     return 1 + max(tree_height(node.left), tree_height(node.right))
 
-print(f'\n\nTree Height: {tree_height(tree)}')
+print(f'\nTree Height: {tree_height(tree)}')
 
 """
 Size of a Tree / Number of nodes in a Binary Tree
